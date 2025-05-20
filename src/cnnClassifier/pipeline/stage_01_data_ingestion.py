@@ -10,8 +10,8 @@ class DataIngestionTrainingPipeline:
 
     def main(self):
         config = ConfigurationManager()
-        data_ngestion_config = config.get_data_ingestion_config()
-        data_ingestion = DataIngestion(config = data_ngestion_config)
+        data_ingestion_config = config.get_data_ingestion_config()
+        data_ingestion = DataIngestion(config = data_ingestion_config)
         data_ingestion.download_file()
         data_ingestion.extract_zip_file()
 
@@ -26,5 +26,4 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(f"Error occurred in {STAGE_NAME}: {str(e)}")
         raise e
-    
     
