@@ -1,14 +1,13 @@
 
 # key: val      # yaml file requires space after colon 
 
-AUGMENTATION: TRUE
+augmentation: true
 image_size: [224, 224, 3] 
-BATCH_SIZE: 16
-include_top: FALSE
-EPOCHS: 10
-classes: 2        # Coccidiosis or Healthy
-weights: imagenet   
+batch_size: 16
+include_top: false
+epochs: 10
+classes: 2
+weights: imagenet
 learning_rate: 0.01
-
-freeze_all: FALSE    
+freeze_all: false
 freeze_till: 3
