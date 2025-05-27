@@ -39,3 +39,11 @@ class TrainingConfig:
     params_image_size: list
     params_learning_rate: float
     trained_model_path: Path
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_the_model: Path
+    training_data: Path
+    all_params: dict
+    params_image_size: list
+    params_batch_size: int
