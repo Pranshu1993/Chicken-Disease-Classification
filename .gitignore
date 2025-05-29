@@ -178,6 +178,9 @@ artifacts/*
 chicken-key_pair.pem
 
 chicken_claddification_user_accessKeys.csv
+
+Secrets.txt
+
 # graphviz .exe file
 windows_10_cmake_Release_graphviz-install-12.2.1-win64.exe
 
