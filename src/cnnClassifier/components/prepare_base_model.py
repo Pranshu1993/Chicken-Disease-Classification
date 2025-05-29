@@ -24,22 +24,23 @@ class PrepareBaseModel:
     def _prepare_full_model(model, classes, freeze_all, freeze_till, learning_rate):
         if freeze_all:                                                                  # Freeze all layers by making them untrainable
             for layer in model.layers:
-                model.trainable = False
+                layer.trainable = False
         elif (freeze_till is not None) and (freeze_till > 0):
-                for layer in model.layers[:-freeze_till]:
-                    model.trainable = False
-        flatten_in = tf.keras.layers.Flatten()(model.output)
+            for layer in model.layers[:-freeze_till]:
+                layer.trainable = False
+
+        flatten_in = tf.keras.layers.GlobalAveragePooling2D()(model.output)
         predictions = tf.keras.layers.Dense(
                 classes, 
-                activation='softmax'
-                )(flatten_in)
+                activation='sigmoid')(flatten_in)
+        
         full_model = tf.keras.models.Model(
                 inputs=model.input, 
                 outputs=predictions)
 
         full_model.compile(
                 optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate), 
-                loss='categorical_crossentropy', 
+                loss='binary_crossentropy', 
                 metrics=['accuracy']
                 )
         
@@ -57,6 +58,5 @@ class PrepareBaseModel:
         
         PrepareBaseModel.save_model(path=self.config.updated_base_model_path, model=self.full_model)      #static method is called using classname.method(). No instance is needed.
     
-
     def save_model(path: str, model: tf.keras.Model):
         model.save(path)

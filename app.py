@@ -36,7 +36,9 @@ def trainRoute():
 def predictRoute():
     image = request.json['image']
     decodeImage(image, clApp.filename)
-    result = clApp.classifier.predict()
+    classifier = PredictionPipeline(clApp.filename)
+    # result = clApp.classifier.predict()
+    result = classifier.predict()
     return jsonify(result)
 
 

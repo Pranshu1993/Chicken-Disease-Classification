@@ -82,10 +82,10 @@ class ConfigurationManager:
             updated_base_model_path = Path(prepare_base_model.updated_base_model_path),
             trained_model_path = Path(training.trained_model_path),
             training_data=Path(training_data),
-            params_epochs=params.EPOCHS,
-            params_batch_size = params.BATCH_SIZE,
-            params_is_augmentation=params.AUGMENTATION,
-            params_image_size=params.IMAGE_SIZE,
+            params_epochs=params.epochs,
+            params_batch_size = params.batch_size,
+            params_is_augmentation=params.augmentation,
+            params_image_size=params.image_size,
             params_learning_rate=params.learning_rate
         )
         
@@ -96,7 +96,7 @@ class ConfigurationManager:
                 path_of_the_model=Path("artifacts/training/model.keras"),
                 training_data=Path("artifacts/data_ingestion/Chicken-fecal-images"),
                 all_params=self.params,
-                params_image_size=self.params.IMAGE_SIZE,
-                params_batch_size=self.params.BATCH_SIZE
+                params_image_size=self.params.image_size,
+                params_batch_size=self.params.batch_size
             )
             return eval_config

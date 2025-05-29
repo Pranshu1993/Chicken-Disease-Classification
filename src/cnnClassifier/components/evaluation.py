@@ -29,6 +29,7 @@ class Evaluation:
             directory=self.config.training_data,
             subset="validation",
             shuffle=False,
+            class_mode="binary",
             **dataflow_kwargs
         )
 
